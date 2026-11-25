@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+/*
+ * common
+ */
+
+:root {
+  --color-bg: #f5f1ec;
+  --color-fg: #170f04;
+  --color-fg-secondary: #392408;
+  --color-border: #c1b3a1;
+
+  --color-header-bg: rgb(255 255 255 / .8);
+  --color-header-fg: var(--color-fg);
+
+  --color-footer-bg: var(--color-fg);
+  --color-footer-fg: var(--color-bg);
+
+  --color-card-bg: #fff;
+  --color-card-fg: var(--color-fg);
+
+  --color-accent: #563916;
+  --color-on-accent: var(--color-bg);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  min-height: 100vh;
+  font-family: "Shippori Mincho B1", serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img,
+iframe {
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.description {
+  margin-bottom: 48px;
+  color: var(--color-fg-secondary);
+}
+
+/*
+ * header
+ */
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-header-bg);
+  backdrop-filter: blur(10px);
+
+  >.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.home {
+  display: block;
+}
+
+.sup {
+  font-size: .75rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1.75rem;
+}
+
+.nav-items {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 4px;
+  padding: 8px 0;
+
+  >li {
+    flex-grow: 1;
+  }
+}
+
+.nav-item {
+  display: block;
+  position: relative;
+  font-size: 1.125rem;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  padding: 0 16px;
+  width: 100%;
+  border-radius: 16px;
+  transition: all 200ms ease-out;
+
+  &:hover {
+    background-color: rgb(from var(--color-fg) r g b / 8%);
+  }
+
+  &:active {
+    background-color: rgb(from var(--color-fg) r g b / 20%);
+  }
+
+  &.current::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 48px / 2);
+    width: 48px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--color-accent);
+  }
+}
+
+/*
+ * main
+ */
+
+main {
+  margin: 24px 0;
+}
+
+/*
+ * footer
+ */
+
+footer {
+  position: sticky;
+  top: 100vh;
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-fg);
+  text-align: center;
+  padding: 8px;
+}
+
+/*
+ * ホーム
+ */
+
+#home p {
+  margin-top: 16px;
+  text-align: center;
+  line-height: 1.8;
+  letter-spacing: .025rem;
+}
+
+/*
+ * 店舗情報
+ */
+
+table {
+  margin-bottom: 16px;
+  border-spacing: 0 16px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 0;
+}
+
+th {
+  padding-right: 16px;
+  color: var(--color-fg-secondary);
+}
+
+/*
+ * メニュー
+ */
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  /* gap: 24px; */
+  /* align-items: center; */
+  background-color: var(--color-card-bg);
+  color: var(--color-card-fg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+
+  >img {
+    /* width: 30%; */
+    height: 200px;
+    object-fit: cover;
+  }
+
+  > div {
+    padding: 16px;
+  }
+}
+
+.menu-name {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.menu-price {
+  font-size: 0.875rem;
+  color: var(--color-fg-secondary);
+}
+
+/*
+ * コンタクト
+ */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  >div {
+    display: flex;
+    flex-direction: column;
+
+    >label {
+      padding-bottom: 8px;
+      color: var(--color-fg-secondary);
+    }
+  }
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  border: 1px solid var(--color-fg-secondary);
+  border-radius: 8px;
+  padding: 8px;
+
+  &:hover {
+    border-color: var(--color-fg);
+  }
+
+  &:focus {
+    border-width: 2px;
+    border-color: var(--color-accent);
+    padding: 7px;
+  }
+}
+
+input[type="submit"] {
+  border-radius: 8px;
+  padding: 16px;
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 500;
+
+  &:hover {
+    background-image: linear-gradient(rgb(from var(--color-on-accent) r g b / 8%));
+  }
+
+  &:active {
+    background-image: linear-gradient(rgb(from var(--color-on-accent) r g b / 20%));
+  }
+}
+
+@media (max-width: 600px) {
+  header > .wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .home {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .sup {
+    font-size: 0.875rem;
+    line-height: 1.2;
+  }
+
+  .title {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+}
